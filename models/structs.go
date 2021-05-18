@@ -23,4 +23,5 @@ type Config struct {
 	ApiSecret string
 	ProjectId string
 	FileName  string
+	Format    string
 }

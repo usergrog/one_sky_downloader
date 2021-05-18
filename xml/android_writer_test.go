@@ -12,8 +12,8 @@ func TestAndroidXMLWrite(t *testing.T) {
 		t.Fatalf(err.Error())
 	}
 	var rawJson = string(dat)
-	var localizations = parsers.AndroidParse(rawJson)
+	var localizations = parsers.Parse(rawJson)
 
-	AndroidXMLWrite(localizations)
+	IOSWrite(localizations)
 
 }

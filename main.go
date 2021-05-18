@@ -45,8 +45,13 @@ func main() {
 	}(resp.Body)
 	respBody, _ := ioutil.ReadAll(resp.Body)
 	log.Println("Parse response")
-	parsedBody := parsers.AndroidParse(string(respBody))
+	parsedBody := parsers.Parse(string(respBody))
+
 	log.Println("Write results")
-	xml.AndroidXMLWrite(parsedBody)
+	if config.Format == "android" {
+		xml.AndroidXMLWrite(parsedBody)
+	} else {
+		xml.IOSWrite(parsedBody)
+	}
 	log.Println("Finished")
 }

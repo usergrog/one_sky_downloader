@@ -12,8 +12,8 @@ func TestAndroidParse(t *testing.T) {
 	}
 	var rawJson = string(dat)
 
-	var localizations = AndroidParse(rawJson)
-	for k,v := range localizations {
+	var localizations = Parse(rawJson)
+	for k, v := range localizations {
 		t.Logf("%s", k)
 		for k2, v2 := range v.Translation {
 			t.Logf("%s - %s", k2, v2)

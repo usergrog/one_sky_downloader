@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 )
 
-func AndroidParse(jsonBody string) map[string]models.Translation {
+func Parse(jsonBody string) map[string]models.Translation {
 	var parsedBody map[string]models.Translation
 	err := json.Unmarshal([]byte(jsonBody), &parsedBody)
 	utils.CheckError(err)

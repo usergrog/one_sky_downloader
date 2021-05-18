@@ -21,9 +21,8 @@ func AndroidXMLWrite(localizations map[string]models.Translation) {
 		utils.CheckError(err)
 		var rows []models.XMLString
 		for key, v := range a.Translation {
-			if strings.Contains(v, "%@") {
-				v = strings.Replace(v, "%@", "%s", -1)
-			}
+			v = strings.Replace(v, "%@", "%s", -1)
+			v = strings.Replace(v, "\n", " ", -1)
 			row := models.XMLString{
 				Name:      key,
 				Value:     v,
