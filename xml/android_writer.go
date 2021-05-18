@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func AndroidXMLWrite(localizations map[string]models.Translation) {
+func AndroidXMLWrite(localizations map[string]map[string]string) {
 	filePath := "res/values"
 	for lang, a := range localizations {
 
@@ -20,7 +20,7 @@ func AndroidXMLWrite(localizations map[string]models.Translation) {
 		_, err = fileOut.Write([]byte("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"))
 		utils.CheckError(err)
 		var rows []models.XMLString
-		for key, v := range a.Translation {
+		for key, v := range a {
 			v = strings.Replace(v, "%@", "%s", -1)
 			v = strings.Replace(v, "\n", " ", -1)
 			row := models.XMLString{

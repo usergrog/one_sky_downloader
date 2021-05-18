@@ -3,7 +3,7 @@ package models
 import "encoding/xml"
 
 type Translation struct {
-	Translation map[string]string
+	Translation interface{}
 }
 
 type XMLString struct {

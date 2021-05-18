@@ -44,8 +44,11 @@ func main() {
 		utils.CheckError(err)
 	}(resp.Body)
 	respBody, _ := ioutil.ReadAll(resp.Body)
-	log.Println("Parse response")
-	parsedBody := parsers.Parse(string(respBody))
+	log.Println("ParseOneSky response")
+	//fileOut, _ := os.Create("response.xml")
+	//fileOut.Write(respBody)
+
+	parsedBody := parsers.ParseOneSky(string(respBody))
 
 	log.Println("Write results")
 	if config.Format == "android" {
