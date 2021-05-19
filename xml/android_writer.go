@@ -11,7 +11,7 @@ import (
 
 func AndroidXMLWrite(localizations map[string]map[string]string) {
 	filePath := "res/values"
-	for lang, a := range localizations {
+	for lang, stringsMap := range localizations {
 
 		err := os.MkdirAll(filePath+"-"+lang, 0700)
 		utils.CheckError(err)
@@ -20,13 +20,14 @@ func AndroidXMLWrite(localizations map[string]map[string]string) {
 		_, err = fileOut.Write([]byte("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"))
 		utils.CheckError(err)
 		var rows []models.XMLString
-		for key, v := range a {
-			v = strings.Replace(v, "%@", "%s", -1)
-			v = strings.Replace(v, "\n", " ", -1)
+		for _, stringKey := range utils.SortedMapKeys(stringsMap) {
+			stringValue := stringsMap[stringKey]
+			stringValue = strings.Replace(stringValue, "%@", "%s", -1)
+			stringValue = strings.Replace(stringValue, "\n", " ", -1)
 			row := models.XMLString{
-				Name:      key,
-				Value:     v,
-				Formatted: !strings.Contains(v, "%"),
+				Name:      stringKey,
+				Value:     stringValue,
+				Formatted: !strings.Contains(stringValue, "%"),
 			}
 			rows = append(rows, row)
 		}

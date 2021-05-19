@@ -1,6 +1,9 @@
 package utils
 
-import "log"
+import (
+	"log"
+	"sort"
+)
 
 func CheckError(err error) {
 	if err != nil {
@@ -8,3 +11,11 @@ func CheckError(err error) {
 	}
 }
 
+func SortedMapKeys(stringsMap map[string]string) []string {
+	keys := make([]string, 0, len(stringsMap))
+	for k := range stringsMap {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	return keys
+}
