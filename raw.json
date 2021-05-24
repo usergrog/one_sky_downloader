@@ -1,9 +1,10 @@
 {
-    "fr": {
+    "nb": {
         "translation": {
             "C": "Recherche de tra\u00e7age de contact",
-            "B": "Recherche de tra\u00e7age de contact",
-            "A": "Voucher"
+            "B": "Recherch\"e de tra\u00e7age de contact",
+            "A": "Voucher",
+            "STR_INACTIVE_ITEMS_SEARCH_INFO": "Use &#39;Search&#39; to find inactive items"
         }
     }
 }
